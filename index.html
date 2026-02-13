@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>for special someone ❤️</title>
     <style>
-               body {
+        body {
             margin: 0;
             height: 100vh;
             display: flex;
@@ -95,7 +95,7 @@
 <body>
 
     <div class="card">
-        <img id="mainGif" src="https://i.pinimg.com/736x/d7/41/04/d74104dc43b52e9010f956031dbaceac.jpg" alt="Love">
+        <img id="mainImg" src="https://i.pinimg.com/1200x/c2/f3/35/c2f335636bf299c625aa680ad151f6bb.jpg" alt="Love">
         
         <h1 id="text">will u be my Valentine?</h1>
 
@@ -109,37 +109,39 @@
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
         const text = document.getElementById('text');
-        const img = document.getElementById('mainGif');
+        const img = document.getElementById('mainImg'); // Исправлено здесь
 
         function moveButton() {
-    if (noBtn.style.position !== 'fixed') {
-        noBtn.style.position = 'fixed';
-    }
+            if (noBtn.style.position !== 'fixed') {
+                noBtn.style.position = 'fixed';
+            }
 
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-    const btnWidth = noBtn.offsetWidth;
-    const btnHeight = noBtn.offsetHeight;
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
 
-    const maxX = windowWidth - btnWidth - 20;
-    const maxY = windowHeight - btnHeight - 20;
+            const maxX = windowWidth - btnWidth - 20;
+            const maxY = windowHeight - btnHeight - 20;
 
-    const x = Math.max(20, Math.floor(Math.random() * maxX));
-    const y = Math.max(20, Math.floor(Math.random() * maxY));
+            const x = Math.max(20, Math.floor(Math.random() * maxX));
+            const y = Math.max(20, Math.floor(Math.random() * maxY));
 
-    noBtn.style.left = x + 'px';
-    noBtn.style.top = y + 'px';
-}
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
 
         noBtn.addEventListener('mouseover', moveButton);
         noBtn.addEventListener('click', moveButton); 
-               yesBtn.addEventListener('click', () => {
+
+        yesBtn.addEventListener('click', () => {
             text.innerHTML = "yay!! luvv uuuu <3333";
+            // Теперь эта строка точно сработает
             img.src = "https://i.pinimg.com/1200x/c2/f3/35/c2f335636bf299c625aa680ad151f6bb.jpg";
             
             noBtn.style.display = 'none';
 
-              for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 50; i++) {
                 setTimeout(() => {
                     const heart = document.createElement('div');
                     heart.classList.add('heart-particle');
