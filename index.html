@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for my special someone ❤️</title>
+    <style>
+               body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, #fff0f3 0%, #ffccd5 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 450px;
+            z-index: 10;
+        }
+
+        img {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            font-size: 26px;
+            margin-bottom: 30px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            min-height: 60px;
+            position: relative;
+        }
+
+        button {
+            padding: 15px 45px;
+            font-size: 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #yesBtn {
+            background-color: #ff4081;
+            color: white;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            background-color: #f50057;
+        }
+
+        #noBtn {
+            background-color: white;
+            color: #555;
+            position: relative; 
+            z-index: 1000;
+        }
+
+        .heart-particle {
+            position: fixed;
+            font-size: 25px;
+            user-select: none;
+            pointer-events: none;
+            animation: fall 3s linear forwards;
+            z-index: 100;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <img id="mainJpg" src="https://i.pinimg.com/736x/d7/41/04/d74104dc43b52e9010f956031dbaceac.jpg" alt="Love">
+        
+        <h1 id="text">will u be my Valentine?</h1>
+
+        <div class="btn-group">
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const text = document.getElementById('text');
+        const img = document.getElementById('mainGif');
+
+        function moveButton() {
+    if (noBtn.style.position !== 'fixed') {
+        noBtn.style.position = 'fixed';
+    }
+
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+
+    const maxX = windowWidth - btnWidth - 20;
+    const maxY = windowHeight - btnHeight - 20;
+
+    const x = Math.max(20, Math.floor(Math.random() * maxX));
+    const y = Math.max(20, Math.floor(Math.random() * maxY));
+
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+}
+
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('click', moveButton); 
+               yesBtn.addEventListener('click', () => {
+            text.innerHTML = "yay!! luvv uuuu <3333";
+            img.src = "https://media.tenor.com/lCKwsD2OW1kAAAAi/happy-cat-happy-happy-cat.gif";
+            
+            noBtn.style.display = 'none';
+
+              for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart-particle');
+                    heart.innerHTML = '❤️';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = '-50px';
+                    heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    document.body.appendChild(heart);
+                }, i * 50);
+            }
+        });
+    </script>
+</body>
+</html>
